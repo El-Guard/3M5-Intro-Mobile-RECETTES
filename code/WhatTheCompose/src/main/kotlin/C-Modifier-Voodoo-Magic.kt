@@ -1,5 +1,8 @@
 package org.example
 
+import org.example.Café.Companion.sucre
+import org.example.Café.Companion.vanilleFrancaise
+
 // Classe Café qui permet de chaîner les ajouts comme dans Jetpack Compose
 class Café private constructor(
     private val ajouts: List<Pair<String, Double>>
@@ -9,6 +12,7 @@ class Café private constructor(
     fun creme(nb: Int): Café = Café(ajouts + List(nb) { "crème" to 0.5 })
     fun lait(nb: Int): Café = Café(ajouts + List(nb) { "lait" to 0.4 })
     fun sucre(nb: Int): Café = Café(ajouts + List(nb) { "sucre" to 0.2 })
+    fun vanilleFrancaise(nb: Int): Café = Café(ajouts + List(nb) { "vanilleFrancaise" to 0.5 })
 
     fun prix(): Double = 1.0 + ajouts.sumOf { it.second }
 
@@ -24,6 +28,7 @@ class Café private constructor(
         fun creme(nb: Int): Café = Café().creme(nb)
         fun lait(nb: Int): Café = Café().lait(nb)
         fun sucre(nb: Int): Café = Café().sucre(nb)
+        fun vanilleFrancaise(nb: Int): Café = Café().vanilleFrancaise(nb)
     }
 }
 
@@ -41,4 +46,12 @@ fun main() {
     val cafe3 = Café()
     println(cafe3)
     println(cafe3.prix())
+
+    val cafe4 = Café().
+        lait(2).
+        sucre(2).
+        vanilleFrancaise(2)
+    println(cafe4)
+    println(cafe4.prix())
+
 }

@@ -20,6 +20,7 @@ fun comparerCroissant(a: Int, b: Int): Boolean = a < b
 fun main() {
     val tableau1 = arrayOf(52, 242, -8432, 120, 4)
     val tableau2 = arrayOf(5, 2, 8, -1, 1, 4)
+    val tableau3 = arrayOf(5, 55, -12, 2034)
 
     // Tri avec une lambda (ordre décroissant)
     triBulle(tableau1) { a, b -> a > b }
@@ -27,7 +28,11 @@ fun main() {
 
     // Tri avec une fonction nommée (ordre croissant)
     triBulle(tableau2, ::comparerCroissant)
-    // syntaxe équivalenteà
+    // syntaxe équivalente
     triBulle(tableau2, { a, b -> comparerCroissant(a, b) })
     println("Tri croissant avec fonction nommée : ${tableau2.joinToString()}")
+
+    // Tri sur longueur des chifres
+    triBulle(tableau3, { a, b -> a.toString().length < b.toString().length })
+    println("Tri sur longueur des chiffres : ${tableau3.joinToString()}")
 }
